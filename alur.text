@@ -1,0 +1,60 @@
+saya ada alur seperti ini
+
+Users ──< Topics ──< SubTopics ──< Contents
+   │                │              │
+   │                │              └─< Content_Progress (by student)
+   │                │
+   │                ├─< Discussions
+   │                └─< Reflections (6 fixed Q per student)
+   │
+   └─< SubTopic_Progress & Topic_Progress
+   │
+   └─< Final_Assignment ──< Final_Submissions
+
+dengan erd
+topics
+- id (PK)
+- title
+- created_at, updated_at
+
+sub_topics
+- id (PK)
+- topic_id (FK → topics.id)
+- title
+- created_at, updated_at
+
+contents
+- id (PK)
+- sub_topic_id (FK → sub_topics.id)
+- title
+- description (longtext)
+- order_number (int) → urutan pembahasan dalam sub-topik
+- created_at, updated_at
+
+
+TODO: done
+- cek pretest apakah sudah submit
+- cek rentang tanggal topik dibuka
+- cek sudah baca semua di topik sebelumnya
+- cek sudah ikut diskusi di topik sebelumnya
+- cek sudah memasukan refleksi di topik sebelumnya
+
+
+TODO:done
+- tampilkan prerequest di list topik
+- aktivasi refleksi pada middleware dan list topik mahasiswa
+
+
+TODO: 
+- tugas akhir
+
+TODO: done
+- sesuaikan timer di pretest
+
+TODO:
+- post test
+
+TODO:
+- kuesioner
+
+tpack-ipa-inklusif.com

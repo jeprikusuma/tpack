@@ -1,0 +1,215 @@
+body {
+    font-family: "Raleway", sans-serif;
+}
+
+:root {
+    --bs-primary: #977CFF;
+    --bs-primary-rgb: 151, 124, 255;
+
+    /* untuk komponen yang punya variasi */
+    --bs-link-color: #977CFF;
+    --bs-link-hover-color: #7f63e6;
+}
+
+/* Button Primary */
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #977CFF;
+    --bs-btn-border-color: #977CFF;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #8366e6;
+    --bs-btn-hover-border-color: #8366e6;
+    --bs-btn-focus-shadow-rgb: 151, 124, 255;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #6f55cc;
+    --bs-btn-active-border-color: #6f55cc;
+    --bs-btn-disabled-bg: #977CFF;
+    --bs-btn-disabled-border-color: #977CFF;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #977CFF;
+  --bs-btn-border-color: #977CFF;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #977CFF;
+  --bs-btn-hover-border-color: #977CFF;
+  --bs-btn-focus-shadow-rgb: 151, 124, 255;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #6f55cc;
+  --bs-btn-active-border-color: #6f55cc;
+  --bs-btn-disabled-color: #977CFF;
+  --bs-btn-disabled-border-color: #977CFF;
+}
+
+.nav-link.active{
+    color: #977CFF !important;
+    font-weight: 600;
+}
+
+/* Alert Primary */
+.alert-primary {
+    --bs-alert-color: #fff;
+    --bs-alert-bg: #977CFF;
+    --bs-alert-border-color: #8366e6;
+}
+
+/* Badge Primary */
+.badge.bg-primary {
+    background-color: #977CFF !important;
+}
+
+/* Link yang pakai text-primary */
+.text-primary {
+    color: #977CFF !important;
+}
+
+/* Background primary */
+.bg-primary {
+    background-color: #977CFF !important;
+}
+
+/* Border primary */
+.border-primary {
+    border-color: #977CFF !important;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+
+.item {
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 1px #F2F2F2 solid;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    padding: 16px 20px;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.number {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #977CFF;
+    transition: all 0.3s ease;
+}
+
+.header-text {
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #977CFF;
+    font-weight: 600;
+    font-size: 0.95rem;
+    user-select: none;
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+.item.open .arrow {
+    transform: rotate(180deg);
+}
+
+.content {
+    display: none;
+    background: #FAFAFA;
+    border-radius: 12px;
+    margin-top: 12px;
+    padding: 16px;
+    font-size: 0.95rem;
+}
+
+.content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.content li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.content li::before {
+    content: "⦿";
+    margin-right: 8px;
+    color: #977CFF;
+}
+
+/* === STYLE SAAT OPEN === */
+.item.open {
+    background: #F9F9F9; /* background berubah */
+}
+
+.item.open .item-header {
+    flex-direction: column; /* angka ke atas judul */
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.item.open .left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.item.open .number {
+    font-size: 28px;
+}
+
+.item.open .header-text {
+    font-size: 24px; 
+    color: #333;
+}
+
+.item.open .right {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+
+footer {
+    background: #FAFAFA;
+    margin-top: 5rem;
+}
+.owl-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+.owl-dots .owl-dot {
+  background-color: #e5e0fc !important;  
+  width: 10px;
+  height: 10px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  margin: 0 3px;
+}
+
+.owl-dots .owl-dot.active {
+  background: #977CFF !important;
+}

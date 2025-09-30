@@ -1,0 +1,87 @@
+:root {
+  --bs-primary: #977CFF;
+  --bs-primary-rgb: 151, 124, 255;
+
+  --bs-secondary: #8AADCA;
+  --bs-secondary-rgb: 138, 173, 202;
+
+  --bs-body-bg: #E6EFF4;
+  --bs-body-color: #2A3547;
+
+  --sidebar-bg: #ffffff;
+  --sidebar-text: #2A3547;
+  --sidebar-border: #00000010;
+  --nav-text: #929ba8;
+}
+
+[data-bs-theme="dark"] {
+  --bs-primary: #977CFF;
+  --bs-primary-rgb: 151, 124, 255;
+
+  --bs-secondary: #8AADCA;
+  --bs-secondary-rgb: 138, 173, 202;
+
+  --bs-body-bg: #1e1e2f;
+  --bs-body-color: #e0e0e0;
+
+  --sidebar-bg: #2a2a3d;
+  --sidebar-text: #e0e0e0;
+  --sidebar-border: #ffffff20;
+  --nav-text: #c0c0c0;
+}
+
+/* Badge Primary */
+.badge.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
+
+/* Text Primary */
+.text-primary {
+  color: var(--bs-primary) !important;
+}
+
+/* Background Primary */
+.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
+
+/* Border Primary */
+.border-primary {
+  border-color: var(--bs-primary) !important;
+}
+
+
+/* Default (Light Mode) */
+.text-dark {
+  color: #212529 !important; /* Bootstrap default dark */
+}
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+/* Dark Mode override */
+[data-bs-theme="dark"] .text-dark {
+  color: #f8f9fa !important; /* jadi terang di dark mode */
+}
+
+[data-bs-theme="dark"] .bg-white {
+  background-color: #212529 !important; /* gunakan warna body dark */
+}
+
+[data-bs-theme="light"] .form-control {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+[data-bs-theme="dark"] .form-control {
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+[data-bs-theme="light"] .bg-light {
+    background-color: #f2f4f6 !important;
+}
+
+[data-bs-theme="dark"] .bg-light {
+    background-color: #3f4348 !important;
+}
