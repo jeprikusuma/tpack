@@ -38,7 +38,7 @@
                 <h5 class="text-dark">Diskusi</h5>
             </a>
             <div class="d-flex gap-3">
-                <a href="#"  class="link-underline link-underline-opacity-0 text-primary">Diskusi sekarang <i class="iconsax ms-2" icon-name="arrow-right"></i></a>
+                <a href="{{ route('mahasiswa.discussion', ['topic_id' => $topic->id]) }}"  class="link-underline link-underline-opacity-0 text-primary">Diskusi sekarang <i class="iconsax ms-2" icon-name="arrow-right"></i></a>
             </div>
         </div>
         <div class="border rounded-4 mb-3 p-4 d-flex flex-column flex-lg-row align-items-md-center justify-content-between">
@@ -46,7 +46,7 @@
                 <h5 class="text-dark">Refleksi</h5>
             </a>
             <div class="d-flex gap-3">
-                <a href="#"  class="link-underline link-underline-opacity-0 text-primary">Tambahkan refleksi <i class="iconsax ms-2" icon-name="arrow-right"></i></a>
+                <a href="{{ route('mahasiswa.reflection', ['topic_id' => $topic->id]) }}"  class="link-underline link-underline-opacity-0 text-primary">Tambahkan refleksi <i class="iconsax ms-2" icon-name="arrow-right"></i></a>
             </div>
         </div>
     </div>
