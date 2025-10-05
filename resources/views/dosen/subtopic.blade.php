@@ -30,7 +30,7 @@
         <div class="col-6"> 
             <div class="border rounded-4 mb-3 p-4 link-underline link-underline-opacity-0">
                 <h5 class="text-dark">Refleksi</h5>
-                <p class="mb-3 text-dark">Belum terdapat refleksi</p>
+                <p class="mb-3 text-dark">{{ $topic->reflections->count() > 0 ? $topic->reflections->count().' refleksi tersedia' : 'Belum terdapat refleksi' }}</p>
                 <a href="{{ route('dosen.reflection', ['topic_id' => $topic->id]) }}" class="link-underline link-underline-opacity-0 text-primary fs-7">
                     Lihat Refleksi<i class="iconsax ms-2" icon-name="arrow-right"></i>
                 </a>
