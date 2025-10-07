@@ -44,9 +44,8 @@ Route::prefix('dosen')->middleware(['auth', 'role:dosen'])->group(function () {
     Route::get('/pretest', [PretestController::class, 'index'])->name('dosen.pretest');
     Route::post('/pretest/update', [PretestController::class, 'update'])->name('dosen.pretest.update');
     
-    
+    // assignment
     Route::get('/assignment', [AssignmentController::class, 'index'])->name('dosen.assignment');
-
-
+    Route::post('/assignment/update', [AssignmentController::class, 'update'])->name('dosen.assignment.update');
 
 });

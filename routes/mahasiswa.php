@@ -40,4 +40,5 @@ Route::prefix('mahasiswa')->middleware(['auth', 'role:mahasiswa'])->group(functi
 
     // assignment
     Route::get('/assignment', [AssignmentController::class, 'index'])->name('mahasiswa.assignment');
+    Route::post('/assignment/upload', [AssignmentController::class, 'upload'])->name('mahasiswa.assignment.upload');
 });
