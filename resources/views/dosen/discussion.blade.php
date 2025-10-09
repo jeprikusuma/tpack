@@ -4,6 +4,14 @@
    Diskusi
 @endsection
 
+@php
+function makeLinksClickable($text) {
+    $pattern = '/(https?:\/\/[^\s<]+)/i';
+    $replacement = '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>';
+    return preg_replace($pattern, $replacement, e($text));
+}
+@endphp
+
 @section('content')
 <div class="bg-white rounded-4 shadow-sm mt-3 p-4">
     <div class="d-flex flex-column flex-lg-row align-items-start justify-content-between mb-3">
@@ -63,7 +71,7 @@
 
                     {{-- bubble utama --}}
                     <div class="mt-3">
-                        <p class="mb-0">{!! nl2br(e($discussion->message)) !!}</p>
+                        <p class="mb-0">{!! nl2br(makeLinksClickable($discussion->message)) !!}</p>
                     </div>
 
                     {{-- Action --}}
@@ -117,7 +125,7 @@
                                             <small class="text-muted">{{ $reply->created_at->diffForHumans() }}</small>
                                         </div>
                                         <div class="my-2">
-                                            <p class="mb-0">{{ $reply->message }}</p>
+                                            <p class="mb-0">{!! nl2br(makeLinksClickable($reply->message)) !!}</p>
                                         </div>
                                         <div class="mt-1">
                                             @if(auth()->id() === $reply->user_id)
