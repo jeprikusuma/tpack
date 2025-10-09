@@ -45,13 +45,13 @@
 
                 <div class="mb-2 d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
                         @if($submissions->has($code))
-                            <div>
-                                <a href="{{ asset('storage/'.$submissions[$code]->file_path) }}" target="_blank" class="btn btn-sm btn-outline-primary">
-                                    <i class="bi bi-file-earmark-text"></i> Lihat File
-                                </a>
-                                <small class="badge bg-success d-block mt-2 mb-2">
+                            <div class="d-flex flex-column">
+                                <small class="badge bg-success d-block">
                                     Dikirim: {{ \Carbon\Carbon::parse($submissions[$code]->submitted_at)->format('d/m/Y H:i') }}
                                 </small>
+                                <a href="{{ asset('storage/'.$submissions[$code]->file_path) }}" target="_blank" class="btn btn-sm btn-outline-primary my-2">
+                                    <i class="bi bi-file-earmark-text"></i> Lihat File
+                                </a>
                             </div>
                         @else
                             <span class="badge bg-warning text-dark mb-2">Belum Dikirim</span>
@@ -65,6 +65,30 @@
                         >
                             <i class="bi bi-upload"></i> @if(!$submissions->has($code)) Upload @else Ganti @endif File
                         </button>
+                </div>
+            </div>
+        @endforeach
+    @endif
+
+    @if (now() > $setting->end_date && !$canAccess)
+        @foreach($tasks as $code => $description)
+            <div class="border rounded-4 p-4 mb-3 bg-light">
+                <h6 class="fw-bold text-primary mb-2">Tugas {{ str_replace('TA', 'Tugas Akhir ', $code) }}</h6>
+                <p class="mb-3">{!! $description !!}</p>
+
+                <div class="mb-2 d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
+                        @if($submissions->has($code))
+                            <div class="d-flex flex-column">
+                                <small class="badge bg-success d-block">
+                                    Dikirim: {{ \Carbon\Carbon::parse($submissions[$code]->submitted_at)->format('d/m/Y H:i') }}
+                                </small>
+                                <a href="{{ asset('storage/'.$submissions[$code]->file_path) }}" target="_blank" class="btn btn-sm btn-outline-primary my-2">
+                                    <i class="bi bi-file-earmark-text"></i> Lihat File
+                                </a>
+                            </div>
+                        @else
+                            <span class="badge bg-danger text-white mb-2">Tidak Dikirim</span>
+                        @endif
                 </div>
             </div>
         @endforeach

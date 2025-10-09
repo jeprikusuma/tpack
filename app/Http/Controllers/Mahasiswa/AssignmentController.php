@@ -12,6 +12,7 @@ use App\Models\Reflection;
 use App\Models\Topic;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AssignmentController extends Controller
 {
@@ -28,20 +29,21 @@ class AssignmentController extends Controller
 
         // Cek prasyarat untuk mengakses tugas akhir
         $check = $this->canAccessFinalAssignment($user);
+        $submissions = FinalTaskSubmission::where('user_id', $user->id)
+            ->get()
+            ->keyBy('task_code');
+
         if (!$check['allowed']) {
             return view('mahasiswa.assignment', [
                 'canAccess' => false,
                 'reasons' => is_array($check['reason']) ? $check['reason'] : [$check['reason']],
                 'setting' => FinalTaskSetting::first(),
-                'submissions' => collect(),
+                'submissions' => $submissions,
                 'tasks' => $this->tasks,
             ]);
         }
 
         $setting = FinalTaskSetting::first();
-        $submissions = FinalTaskSubmission::where('user_id', $user->id)
-            ->get()
-            ->keyBy('task_code');
 
         return view('mahasiswa.assignment', [
             'canAccess' => true,
@@ -60,6 +62,7 @@ class AssignmentController extends Controller
             return redirect()->back()->with('error', 'Persyaratan tidak terpenuhi!');
         }
         
+        // Validasi input
         $request->validate([
             'task_code' => 'required|in:TA1,TA2,TA3',
             'file' => 'required|mimes:pdf,doc,docx|max:3048',
@@ -67,8 +70,21 @@ class AssignmentController extends Controller
 
         $user = auth()->user();
         $file = $request->file('file');
+
+        // Cari data submission sebelumnya
+        $existingSubmission = FinalTaskSubmission::where('user_id', $user->id)
+            ->where('task_code', $request->task_code)
+            ->first();
+
+        // Hapus file lama jika ada
+        if ($existingSubmission && $existingSubmission->file_path && Storage::disk('public')->exists($existingSubmission->file_path)) {
+            Storage::disk('public')->delete($existingSubmission->file_path);
+        }
+
+        // Simpan file baru
         $path = $file->store("final_tasks/{$user->id}", 'public');
 
+        // Simpan atau update record di database
         FinalTaskSubmission::updateOrCreate(
             [
                 'user_id' => $user->id,
@@ -82,6 +98,7 @@ class AssignmentController extends Controller
 
         return redirect()->back()->with('success', 'File berhasil diunggah.');
     }
+
 
     private function canAccessFinalAssignment($user)
     {
@@ -104,7 +121,7 @@ class AssignmentController extends Controller
         if(!$setting->isActive()){
             return [
                 'allowed' => false,
-                'reason' => "Tugas akhir tersedia pada ".Carbon::parse($setting->start_date)->format('d M Y H:i')." - ".Carbon::parse($setting->end_date)->format('d M Y H:i')
+                'reason' => "Tugas dapat diakses pada ".Carbon::parse($setting->start_date)->format('d M Y H:i')." - ".Carbon::parse($setting->end_date)->format('d M Y H:i')
             ];
             
         }

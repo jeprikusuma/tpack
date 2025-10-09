@@ -24,13 +24,13 @@
         <form action="{{ route('mahasiswa.discussion.store', $topic->id) }}" method="POST">
             @csrf
             <div class="d-flex align-items-start">
-                <div class="me-3">
+                <div class="me-3 d-none d-md-block">
                     <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=977CFF&color=fff" 
                          alt="avatar" class="rounded-circle" width="40" height="40">
                 </div>
                 <div class="flex-grow-1">
                     <textarea name="message" id="message" rows="3" 
-                              class="form-control rounded-3 shadow-sm border-0 @error('message') is-invalid @enderror" 
+                              class="form-control rounded-3 border-1 @error('message') is-invalid @enderror" 
                               placeholder="Tulis sesuatu...">{{ old('message') }}</textarea>
                     @error('message')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -47,7 +47,7 @@
     <div>
         <h5 class="fw-bold mb-3">Diskusi Terbaru</h5>
         @forelse($discussions as $discussion)
-            <div class="d-flex mb-4 p-3 rounded-4 shadow-sm bg-white hover-shadow-sm">
+            <div class="d-flex mb-4 p-3 rounded-4 border bg-white hover-shadow-sm">
                 {{-- Avatar User --}}
                 <div class="me-3">
                     <img src="https://ui-avatars.com/api/?name={{ urlencode($discussion->user->name) }}&background=8AADCA&color=fff" 
@@ -84,16 +84,16 @@
                     </div>
 
                     {{-- Form balasan (hidden by default) --}}
-                    <div id="reply-form-{{ $discussion->id }}" class="d-none my-5">
+                    <div id="reply-form-{{ $discussion->id }}" class="d-none my-3">
                         <form action="{{ route('mahasiswa.discussion.reply', [$topic->id, $discussion->id]) }}" method="POST">
                             @csrf
                             <div class="d-flex align-items-start">
-                                <div class="me-2">
+                                <div class="me-2 d-none d-md-block">
                                     <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=977CFF&color=fff"
                                         alt="avatar" class="rounded-circle" width="32" height="32">
                                 </div>
                                 <div class="flex-grow-1">
-                                    <textarea name="message" rows="2" class="form-control border-0 shadow-sm rounded-3 mb-2" placeholder="Tulis balasan..."></textarea>
+                                    <textarea name="message" rows="2" class="form-control border-1 rounded-3 mb-2" placeholder="Tulis balasan ke {{ $discussion->user->name }}..."></textarea>
                                     <div class="text-start mt-3">
                                         <button class="btn btn-sm btn-primary rounded-pill px-3" type="submit">Kirim</button>
                                     </div>
