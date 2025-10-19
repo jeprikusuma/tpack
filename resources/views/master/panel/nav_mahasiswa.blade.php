@@ -23,4 +23,16 @@
             Tugas Akhir
         </div>
     </a>
+    <a class="siderbar-menu {{ Request::is('mahasiswa/perception') || Request::is('mahasiswa/perception/*') ? 'active' : '' }}"  href="{{ route('mahasiswa.perception') }}">
+        <div>
+            <i class="iconsax me-2" icon-name="document-text-1"></i>
+            Instrumen Persepsi
+        </div>
+    </a>
+    <a class="siderbar-menu {{ Request::is('mahasiswa/posttest') || Request::is('mahasiswa/posttest/*') ? 'active' : '' }}"  href="{{ route('mahasiswa.posttest') }}">
+        <div>
+            <i class="iconsax me-2" icon-name="notepad"></i>
+            Post-test
+        </div>
+    </a>
 </div>

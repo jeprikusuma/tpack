@@ -64,4 +64,9 @@ class User extends Authenticatable
         return $this->hasMany(Reflection::class);
     }
 
+    public function perceptionResponse()
+    {
+        return $this->hasOne(PerceptionResponse::class, 'student_id');
+    }
+
 }

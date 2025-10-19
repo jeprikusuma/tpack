@@ -4,6 +4,8 @@ use App\Http\Controllers\Dosen\AssignmentController;
 use App\Http\Controllers\Dosen\ContentController;
 use App\Http\Controllers\Dosen\DashboardController;
 use App\Http\Controllers\Dosen\DiscussionControler;
+use App\Http\Controllers\Dosen\PerceptionController;
+use App\Http\Controllers\Dosen\PosttestController;
 use App\Http\Controllers\Dosen\PretestController;
 use App\Http\Controllers\Dosen\ReflectionController;
 use App\Http\Controllers\Dosen\SubTopicController;
@@ -47,5 +49,14 @@ Route::prefix('dosen')->middleware(['auth', 'role:dosen'])->group(function () {
     // assignment
     Route::get('/assignment', [AssignmentController::class, 'index'])->name('dosen.assignment');
     Route::post('/assignment/update', [AssignmentController::class, 'update'])->name('dosen.assignment.update');
+
+    // perception
+    Route::get('/perception', [PerceptionController::class, 'index'])->name('dosen.perception');
+    Route::post('/perception/update', [PerceptionController::class, 'update'])->name('dosen.perception.update');
+    Route::get('/perception/{studentId}', [PerceptionController::class, 'show'])->name('dosen.perception.show');
+
+    // posttest
+    Route::get('/posttest', [PosttestController::class, 'index'])->name('dosen.posttest');
+    Route::post('/posttest/update', [PosttestController::class, 'update'])->name('dosen.posttest.update');
 
 });

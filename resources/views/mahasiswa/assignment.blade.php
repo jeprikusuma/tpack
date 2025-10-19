@@ -40,7 +40,7 @@
 
         @foreach($tasks as $code => $description)
             <div class="border rounded-4 p-4 mb-3">
-                <h6 class="fw-bold text-primary mb-2">Tugas {{ str_replace('TA', 'Tugas Akhir ', $code) }}</h6>
+                <h6 class="fw-bold text-primary mb-2">{{ str_replace('TA', 'Tugas Akhir ', $code) }}</h6>
                 <p class="mb-3">{!! $description !!}</p>
 
                 <div class="mb-2 d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
@@ -73,7 +73,7 @@
     @if (now() > $setting->end_date && !$canAccess)
         @foreach($tasks as $code => $description)
             <div class="border rounded-4 p-4 mb-3 bg-light">
-                <h6 class="fw-bold text-primary mb-2">Tugas {{ str_replace('TA', 'Tugas Akhir ', $code) }}</h6>
+                <h6 class="fw-bold text-primary mb-2">{{ str_replace('TA', 'Tugas Akhir ', $code) }}</h6>
                 <p class="mb-3">{!! $description !!}</p>
 
                 <div class="mb-2 d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">

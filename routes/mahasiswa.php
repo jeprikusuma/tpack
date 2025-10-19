@@ -3,6 +3,8 @@
 use App\Http\Controllers\Mahasiswa\AssignmentController;
 use App\Http\Controllers\Mahasiswa\DashboardController;
 use App\Http\Controllers\Mahasiswa\DiscussionController;
+use App\Http\Controllers\Mahasiswa\PerceptionController;
+use App\Http\Controllers\Mahasiswa\PosttestController;
 use App\Http\Controllers\Mahasiswa\PretestController;
 use App\Http\Controllers\Mahasiswa\ReflectionController;
 use App\Http\Controllers\Mahasiswa\TopicController;
@@ -41,4 +43,14 @@ Route::prefix('mahasiswa')->middleware(['auth', 'role:mahasiswa'])->group(functi
     // assignment
     Route::get('/assignment', [AssignmentController::class, 'index'])->name('mahasiswa.assignment');
     Route::post('/assignment/upload', [AssignmentController::class, 'upload'])->name('mahasiswa.assignment.upload');
+
+    // posttest
+    Route::get('/posttest', [PosttestController::class, 'index'])->name('mahasiswa.posttest');
+    Route::get('/posttest/do', [PosttestController::class, 'do'])->name('mahasiswa.posttest.do');
+    Route::post('/posttest/submit', [PosttestController::class, 'submit'])->name('mahasiswa.posttest.submit');
+    
+    // perception
+    Route::get('/perception', [PerceptionController::class, 'index'])->name('mahasiswa.perception');
+    Route::get('/perception/do', [PerceptionController::class, 'do'])->name('mahasiswa.perception.do');
+    Route::post('/perception/submit', [PerceptionController::class, 'submit'])->name('mahasiswa.perception.submit');
 });
