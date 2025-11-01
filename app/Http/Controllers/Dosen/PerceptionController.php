@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Dosen;
 
+use App\Exports\PerceptionExport;
 use App\Http\Controllers\Controller;
 use App\Models\PerceptionResponse;
 use App\Models\PerceptionSetting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PerceptionController extends Controller
 {
@@ -51,6 +53,11 @@ class PerceptionController extends Controller
         $questions = $this->getQuestions();
 
         return view('dosen.perception_show', compact('student', 'response', 'questions'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new PerceptionExport, 'hasil_instrumen_persepsi.xlsx');
     }
 
     private function getQuestions()

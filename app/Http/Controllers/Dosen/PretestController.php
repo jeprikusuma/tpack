@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Dosen;
 
+use App\Exports\PretestExport;
 use App\Http\Controllers\Controller;
 use App\Models\Pretest;
 use App\Models\PretestAttempt;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PretestController extends Controller
 {
@@ -44,5 +46,11 @@ class PretestController extends Controller
         return redirect()
             ->route('dosen.pretest')
             ->with('success', 'Pengaturan pretest berhasil disimpan.');
+    }
+
+
+    public function export()
+    {
+        return Excel::download(new PretestExport, 'hasil_pretest.xlsx');
     }
 }

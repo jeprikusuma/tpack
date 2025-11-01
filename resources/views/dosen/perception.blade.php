@@ -80,6 +80,9 @@
             <h4 class="text-dark">Instrumen Persepsi</h4>
             <p class="text-muted mb-0">Daftar hasil mahasiswa</p>
         </div>
+        <a href="{{ route('dosen.perception.export') }}" class="btn btn-sm btn-success">
+            <i class="bi bi-download"></i> Download Excel
+        </a>
     </div>
 
     @if($responses->isEmpty())

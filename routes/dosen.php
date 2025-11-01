@@ -45,6 +45,7 @@ Route::prefix('dosen')->middleware(['auth', 'role:dosen'])->group(function () {
     // pretest
     Route::get('/pretest', [PretestController::class, 'index'])->name('dosen.pretest');
     Route::post('/pretest/update', [PretestController::class, 'update'])->name('dosen.pretest.update');
+    Route::get('/pretest/export', [PretestController::class, 'export'])->name('dosen.pretest.export');
     
     // assignment
     Route::get('/assignment', [AssignmentController::class, 'index'])->name('dosen.assignment');
@@ -53,10 +54,12 @@ Route::prefix('dosen')->middleware(['auth', 'role:dosen'])->group(function () {
     // perception
     Route::get('/perception', [PerceptionController::class, 'index'])->name('dosen.perception');
     Route::post('/perception/update', [PerceptionController::class, 'update'])->name('dosen.perception.update');
+    Route::get('/perception/export', [PerceptionController::class, 'export'])->name('dosen.perception.export');
     Route::get('/perception/{studentId}', [PerceptionController::class, 'show'])->name('dosen.perception.show');
 
     // posttest
     Route::get('/posttest', [PosttestController::class, 'index'])->name('dosen.posttest');
     Route::post('/posttest/update', [PosttestController::class, 'update'])->name('dosen.posttest.update');
+    Route::get('/posttest/export', [PosttestController::class, 'export'])->name('dosen.posttest.export');
 
 });

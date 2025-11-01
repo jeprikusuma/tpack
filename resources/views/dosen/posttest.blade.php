@@ -57,7 +57,12 @@
 </div>
 <div class=" bg-white rounded-4 mt-3 p-4">
     {{-- Tabel hasil posttest mahasiswa --}}
-    <h4>Hasil Post-Test Mahasiswa</h4>
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
+        <h4>Hasil Post-test Mahasiswa</h4>
+        <a href="{{ route('dosen.posttest.export') }}" class="btn btn-sm btn-success">
+            <i class="bi bi-download"></i> Download Excel
+        </a>
+    </div>
 
     @if($attempts->isEmpty())
         <p class="text-muted">Belum ada mahasiswa yang mengerjakan posttest.</p>

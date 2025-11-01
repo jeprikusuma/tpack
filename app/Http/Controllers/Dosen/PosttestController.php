@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Dosen;
 
+use App\Exports\PosttestExport;
 use App\Http\Controllers\Controller;
 use App\Models\Posttest;
 use App\Models\PosttestAttempt;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PosttestController extends Controller
 {
@@ -44,5 +46,10 @@ class PosttestController extends Controller
         return redirect()
             ->route('dosen.posttest')
             ->with('success', 'Pengaturan posttest berhasil disimpan.');
+    }
+
+    public function export()
+    {
+        return Excel::download(new PosttestExport, 'hasil_posttest.xlsx');
     }
 }
